@@ -17,7 +17,7 @@ from pathlib import Path
 import requests
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-
+from vechile_history import plate_history
 def parse_arguments(args_hook=lambda _: _):
     parser = argparse.ArgumentParser(
         description=
@@ -246,8 +246,9 @@ def main():
     if args.output_file:
         save_results(results, args)
     else:
-        #print(json.dumps(results[0]['results'][0]['plate'], indent=2))
-        print(results[0]['results'][0]['plate'])
+        plate_no=results[0]['results'][0]['plate']
+        print(plate_no)
+        print('Vechile history',plate_history(plate_no))
 
 
 if __name__ == '__main__':
